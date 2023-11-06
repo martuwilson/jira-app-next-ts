@@ -16,9 +16,23 @@ export const UIProvider: FC<React.PropsWithChildren<{}>> = ({ children }) => {
 
     const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
+    const openSideMenu = () =>{
+        dispatch({type: 'UI - Open Sidebar'})
+    }
+
+    const closeSideMenu = () =>{
+        dispatch({type: 'UI - Close Sidebar'})
+    }
 
     return (
-        <UIContext.Provider value={{ sideMenuOpen: false }}>
+        <UIContext.Provider
+        value={{ 
+            ...state,
+
+            //Methods
+            openSideMenu,
+            closeSideMenu
+        }}>
             {children}
         </UIContext.Provider>
     );
