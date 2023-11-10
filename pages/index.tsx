@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Card, CardContent, CardHeader, Grid } from '@mui/material'
 import { Layout } from '@/components/layouts'
+import { EntryList } from '@/components/ui'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,10 +24,10 @@ export default function Home() {
             />
 
 
-            <CardContent>
+            
               {/* agregar nueva tarea */}
-              {/* listado de entradas */}
-            </CardContent>
+              <EntryList/>
+            
           </Card>
         </Grid>
 
@@ -39,6 +40,7 @@ export default function Home() {
             <CardHeader
               title='En progreso'
             />
+             <EntryList/>
           </Card>
         </Grid>
 
@@ -51,6 +53,7 @@ export default function Home() {
             <CardHeader
               title='Finalizadas'
             />
+             <EntryList/>
           </Card>
         </Grid>
         
