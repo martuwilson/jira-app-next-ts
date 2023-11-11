@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Card, CardContent, CardHeader, Grid } from '@mui/material'
 import { Layout } from '@/components/layouts'
-import { EntryList } from '@/components/ui'
+import { EntryList, NewEntry } from '@/components/ui'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,6 +23,7 @@ export default function Home() {
               title='Pendientes'
             />
               {/* agregar nueva tarea */}
+              <NewEntry />
               <EntryList status='pending'/>
             
           </Card>
