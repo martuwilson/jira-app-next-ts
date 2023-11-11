@@ -13,19 +13,19 @@ const Entries_INITIAL_STATE: EntriesState = {
     entries: [
         {
             _id: uuidv4(),
-            description: 'lorem ipsum dolor sit amet',
+            description: 'Pendiente: lorem ipsum dolor sit amet',
             status: 'pending',
             createdAt: Date.now(),
         },
         {
             _id: uuidv4(),
-            description: 'perdio boquita',
+            description: 'En-Progreso: perdio boquita',
             status: 'in-progress',
             createdAt: Date.now() - 1000000,
         },
         {
             _id: uuidv4(),
-            description: 'si pierde river con central boca afuera de la copa',
+            description: 'Terminadas: si pierde river con central boca afuera de la copa',
             status: 'finished',
             createdAt: Date.now() - 10000,
         }

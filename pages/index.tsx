@@ -22,11 +22,8 @@ export default function Home() {
             <CardHeader
               title='Pendientes'
             />
-
-
-            
               {/* agregar nueva tarea */}
-              <EntryList/>
+              <EntryList status='pending'/>
             
           </Card>
         </Grid>
@@ -40,7 +37,7 @@ export default function Home() {
             <CardHeader
               title='En progreso'
             />
-             <EntryList/>
+             <EntryList status='in-progress'/>
           </Card>
         </Grid>
 
@@ -53,7 +50,7 @@ export default function Home() {
             <CardHeader
               title='Finalizadas'
             />
-             <EntryList/>
+             <EntryList status='finished' />
           </Card>
         </Grid>
         
