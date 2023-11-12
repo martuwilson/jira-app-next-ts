@@ -3,8 +3,9 @@ import React, { FC, useContext, useMemo, DragEvent } from 'react'
 import { EntryCard } from './'
 import { EntryStatus } from '@/interfaces'
 import { EntriesContext } from '@/context/entries';
-/* uso de divs para acceder luego a onDrag, etc */
+import { UIContext } from '@/context/ui';
 
+import styles from './EntryList.module.css'
 interface Props {
     status : EntryStatus;
 }
@@ -12,7 +13,8 @@ interface Props {
 export const EntryList:FC<Props> = ({ status }) => {
 
     const { entries } = useContext(EntriesContext);
-    
+    const { isDragging } = useContext(UIContext)
+
     const entriesByStatus = useMemo(() => entries.filter(entry => entry.status === status) , [entries]);
 
     const onDropEntry = (event: DragEvent<HTMLDivElement>) => {
@@ -24,8 +26,13 @@ export const EntryList:FC<Props> = ({ status }) => {
         event.preventDefault();
     }
 
+
   return (
-    <div onDrop={ onDropEntry } onDragOver={ allowDrop }>
+    <div
+    onDrop={ onDropEntry }
+    onDragOver={ allowDrop }
+    className={isDragging ? styles.dragging : ''}
+    >
         <Paper
             sx={{
                 height: 'calc(100vh - 250px)',
@@ -35,7 +42,7 @@ export const EntryList:FC<Props> = ({ status }) => {
             }}
         >
             <List
-            sx={{ opacity: 1 }}
+            sx={{ opacity:isDragging ? 0.2 : 1, transition: 'all 0.3s ease' }}
             >
                 {entriesByStatus.map(entry => (
                     <EntryCard
