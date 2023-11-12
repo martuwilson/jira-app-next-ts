@@ -1,13 +1,16 @@
 
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState,useContext } from 'react'
 
 import { Button, Box,TextField } from '@mui/material'
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import { EntriesContext } from '@/context/entries';
 
 
 export const NewEntry = () => {
+
+    const {addNewEntry} = useContext(EntriesContext)
 
     const [isAdding, setIsAdding] = useState(false)
     const [inputValue, setInputValue] = useState('')
@@ -24,8 +27,10 @@ export const NewEntry = () => {
             return
         } 
 
-        console.log({ inputValue: inputValue})
-        
+        addNewEntry(inputValue) // agrega la entrada
+        setIsAdding(false); // cierra el formulario
+        setTouch(false); // limpia el error
+        setInputValue(''); // limpia el input
     }
 
   return (
